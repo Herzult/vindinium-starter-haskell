@@ -58,7 +58,7 @@ data Game = Game {
   , gameFinished :: Bool
 } deriving (Show, Eq)
 
-newtype HeroId = HeroId Integer
+newtype HeroId = HeroId Int
     deriving (Show, Eq)
 
 data Hero = Hero {
