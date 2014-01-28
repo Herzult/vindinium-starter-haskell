@@ -3,7 +3,7 @@
 
 name:                vindinium
 version:             0.1.0.0
-synopsis:            Haskell starter bot for vindinium.jousse.org
+synopsis:            Haskell starter bot for vindinium.org
 homepage:            https://github.com/Herzult/vindinium-starter-haskell
 license:             MIT
 license-file:        LICENSE
