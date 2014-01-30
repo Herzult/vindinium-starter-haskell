@@ -17,7 +17,7 @@ Install the project using cabal...
 cabal install
 ```
 
-...and execute one of the following command:
+...and execute one of the following commands:
 
 ```
 vindinium training [--turns 10] [--url http://custom.vindinium.url]
