@@ -9,7 +9,7 @@ import Bot
 import Data.String (fromString)
 import Data.Text (pack, unpack)
 
-data Cmd = Training Settings (Maybe Int) (Maybe Board)
+data Cmd = Training Settings (Maybe Int) (Maybe BoardId)
          | Arena Settings
          deriving (Show, Eq)
 
@@ -24,7 +24,7 @@ settings = Settings <$> (Key <$> argument (Just . pack) (metavar "KEY"))
 trainingCmd :: Parser Cmd
 trainingCmd = Training <$> settings
                        <*> optional (option (long "turns"))
-                       <*> pure Nothing
+                       <*> optional (strOption (long "map"))
 
 arenaCmd :: Parser Cmd
 arenaCmd = Arena <$> settings
