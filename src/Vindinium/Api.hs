@@ -19,7 +19,7 @@ import Control.Monad (liftM, mzero)
 import Control.Monad.IO.Class (liftIO)
 import Control.Applicative ((<$>), (<*>))
 
-startTraining :: Maybe Int -> Maybe Board -> Vindinium State
+startTraining :: Maybe Int -> Maybe BoardId -> Vindinium State
 startTraining mi mb = do
     url <- startUrl "training"
     let obj = object ( maybe [] (\i -> [("turns", toJSON i)]) mi

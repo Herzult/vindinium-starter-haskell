@@ -15,6 +15,7 @@ module Vindinium.Types
         , Tile (..)
         , Pos (..)
         , Dir (..)
+        , BoardId
         )
     where
 
@@ -22,6 +23,8 @@ import Data.Text (Text)
 
 import Control.Monad.Reader (MonadReader, ReaderT, runReaderT, asks)
 import Control.Monad.IO.Class (MonadIO)
+
+type BoardId = String
 
 newtype Key = Key Text deriving (Show, Eq)
 
