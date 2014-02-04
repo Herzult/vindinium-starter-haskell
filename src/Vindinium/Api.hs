@@ -59,6 +59,7 @@ request url val = do
                     , (hUserAgent,   "vindinium-starter-haskell")
                     ]
                 , requestBody = jsonBody (injectKey val key)
+                , responseTimeout = Nothing
                 }
 
     liftIO $ withManager defaultManagerSettings $ \mgr ->
@@ -147,7 +148,9 @@ instance FromJSON HeroId where
     parseJSON x = HeroId <$> parseJSON x
 
 instance FromJSON Pos where
-    parseJSON (Object o) = Pos <$> o .: "x" <*> o .: "y"
+    {-parseJSON (Object o) = Pos <$> o .: "x" <*> o .: "y"-}
+    {-AA 20140204 These seem to be labelled around the wrong way in the JSON-}
+    parseJSON (Object o) = Pos <$> o .: "y" <*> o .: "x"
     parseJSON _ = mzero
 
 instance FromJSON Board where
