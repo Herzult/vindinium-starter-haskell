@@ -18,12 +18,12 @@ cmdSettings (Training s _ _) = s
 cmdSettings (Arena s) = s
 
 settings :: Parser Settings
-settings = Settings <$> (Key <$> argument (Just . pack) (metavar "KEY"))
+settings = Settings <$> (Key <$> argument (str >>= (return . pack)) (metavar "KEY"))
                     <*> (fromString <$> strOption (long "url" <> value "http://vindinium.org"))
 
 trainingCmd :: Parser Cmd
 trainingCmd = Training <$> settings
-                       <*> optional (option (long "turns"))
+                       <*> optional (option auto (long "turns"))
                        <*> pure Nothing
 
 arenaCmd :: Parser Cmd
