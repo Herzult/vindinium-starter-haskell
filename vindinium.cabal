@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 executable vindinium
   main-is:          Main.hs
   hs-source-dirs:   src
-  build-depends:    base >=4.6 && <4.7
+  build-depends:    base >=4.6
                   , mtl
                   , transformers
                   , text
@@ -24,4 +24,4 @@ executable vindinium
                   , HTTP
                   , http-types
                   , http-client
-                  , optparse-applicative
+                  , optparse-applicative >= 0.11.0
