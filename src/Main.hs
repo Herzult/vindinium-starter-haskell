@@ -6,6 +6,7 @@ import Options.Applicative
 import Vindinium
 import Bot
 
+import Data.Monoid ((<>))
 import Data.String (fromString)
 import Data.Text (pack, unpack)
 
