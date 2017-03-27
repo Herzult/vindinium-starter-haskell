@@ -11,15 +11,11 @@ You can create your bot by editing the `Bot.bot` function.
 Executing Your Bot
 ------------------
 
-Install the project using cabal...
+First install [haskell stack](https://haskell-lang.org/get-started). Next you should just need to run `stack build` to download dependencies and build the project.
+
+Once that is done, you can run your bot as follows:
 
 ```
-cabal install
-```
-
-...and execute one of the following commands:
-
-```
-vindinium training [--turns 10] [--url http://custom.vindinium.url]
-vindinium arena [--url http://custom.vindinium.url]
+stack exec -- vindinium training <API key> [--turns 10] [--url http://custom.vindinium.url]
+stack exec -- vindinium arena <API key> [--url http://custom.vindinium.url]
 ```
