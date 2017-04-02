@@ -31,7 +31,7 @@ data Settings = Settings {
 } deriving (Show, Eq)
 
 newtype Vindinium a = Vindinium { unVindinium :: ReaderT Settings IO a }
-    deriving (Monad, MonadReader Settings, MonadIO)
+    deriving (Monad, Applicative, Functor, MonadReader Settings, MonadIO)
 
 runVindinium :: Settings -> Vindinium a -> IO a
 runVindinium s = flip runReaderT s . unVindinium

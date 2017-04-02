@@ -50,7 +50,7 @@ request :: Text -> Value -> Vindinium State
 request url val = do
     key <- asks settingsKey
 
-    initReq <- liftIO $ parseUrl $ unpack url
+    initReq <- liftIO $ parseUrlThrow $ unpack url
     let req = initReq
                 { method = "POST"
                 , requestHeaders =
@@ -59,11 +59,11 @@ request url val = do
                     , (hUserAgent,   "vindinium-starter-haskell")
                     ]
                 , requestBody = jsonBody (injectKey val key)
-                , responseTimeout = Nothing
+                , responseTimeout = responseTimeoutNone
                 }
 
-    liftIO $ withManager defaultManagerSettings $ \mgr ->
-        liftM (decodeBody . responseBody) $ httpLbs req mgr
+    mgr <- liftIO $ newManager defaultManagerSettings
+    liftIO $ liftM (decodeBody . responseBody) $ httpLbs req mgr
 
   where
     jsonBody = RequestBodyLBS . encode
